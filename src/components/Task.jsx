@@ -23,7 +23,7 @@ const Task = ({ payload }) => {
                       <UpdateTaskDue taskDue={task.due} />
                     </div>
                   </div>
-                  <UpdateTaskDescription taskDescription={task.description} />
+                  <UpdateTaskDescription taskDescription={task.description} taskId={task.id} />
                 </div>
                 <div>
                   <DeleteButton deleteTaskId={task.id} />
