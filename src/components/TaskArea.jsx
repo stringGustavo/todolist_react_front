@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Task from './Task';
-import TaskLoading from './TaskLoading';
-import TaskEmpty from './TaskEmpty';
+import TaskState from './TaskState';
 import axios from 'axios';
 import useButtonContext from '../hook/useButtonContext';
 
@@ -38,9 +37,9 @@ const TaskArea = () => {
 
     }, [buttonTrigger])
 
-    if (isEmpty) return <TaskEmpty />
+    if (isEmpty) return <TaskState message={"Nenhuma Tarefa Encontrada."}/>
 
-    if (isLoading) return <TaskLoading />
+    if (isLoading) return <TaskState message={"Carregando Tarefas..."} />
 
     return (
         <Task payload={tasks}/>
