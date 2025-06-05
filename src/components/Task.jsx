@@ -12,7 +12,7 @@ const Task = ({ payload }) => {
       <div className=' animate-fade-in flex flex-col justify-start border-r-0 border-gray-500 bg-gray-900 w-200 h-full overflow-y-auto overflow-x-hidden scrollbar-custom'>
         <AnimatePresence>
           {Object.values(payload).map((task, index) => (
-            <motion.div key={task.id} initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ duration: 0.5 }} className='my-3'>
+            <motion.div key={task.id} initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ duration: 0.5 }} className='my-'>
               <small className='border-1 border-b-0 border-gray-400 bg-gray-800 hover:bg-gray-950 text-orange-500 rounded-md rounded-b-none ml-date p-1'>Adicionado em: {new Date(task.date).toLocaleString()}</small>
               <div className='flex'>
                 <div className='outline-1 outline-gray-400 bg-gray-800 hover:bg-gray-950 shadow-2xl transition-all ease-in w-175 ml-5 mr-3 rounded-md rounded-tl-none p-2'>
@@ -31,8 +31,8 @@ const Task = ({ payload }) => {
               </div>
             </motion.div>
           ))}
-        </AnimatePresence >
-      </div >
+        </AnimatePresence>
+      </div>
     </>
   )
 }
