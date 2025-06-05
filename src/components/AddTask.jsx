@@ -12,6 +12,8 @@ const AddTask = () => {
         due: '',
         date: '',
         priority: '2',
+        isArchived: false,
+        isFinished: false
     });
 
     const handleChange = e => setTask({ ...task, [e.target.name]: e.target.value, });
@@ -23,7 +25,9 @@ const AddTask = () => {
                 description: task.description,
                 due: new Date(task.due),
                 date: new Date(),
-                priority: parseInt(task.priority)
+                priority: parseInt(task.priority),
+                isArchived: false,
+                isFinished: false
             })
             .then(() => {
                 setTask({
