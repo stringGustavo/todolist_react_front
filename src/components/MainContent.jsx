@@ -8,7 +8,7 @@ const MainContent = () => {
     const [changeTrigger, setChangeTrigger] = useState(true);
 
     return (
-        <div className='flex outline-1 outline-gray-500 w-300 h-150 rounded-b-md bg-gray-900'>
+        <div className='flex outline-1 outline-gray-500 w-300 h-150 rounded-bl-md rounded-br-md bg-gray-900'>
             <ButtonProvider>
                 {
                     changeTrigger ?

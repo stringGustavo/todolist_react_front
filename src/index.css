@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* TIPPY */
+.tippy-box {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 .font-roboto {
   font-family: 'Roboto';
 }

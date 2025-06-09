@@ -15,17 +15,17 @@ const RangeSlider = ({ name, rangePriority, value }) => {
             <div className="flex justify-between text-white text-sm mt-2 px-1">
                 <span className="flex flex-col items-center gap-1 text-green-600">
                     <FaSmile className="text-xl" />
-                    Baixo
+                    Baixa
                 </span>
 
                 <span className="flex flex-col items-center gap-1 text-yellow-600">
                     <FaMeh className="text-xl" />
-                    Médio
+                    Média
                 </span>
 
                 <span className="flex flex-col items-center gap-1 text-red-500">
                     <FaFlushed className="text-xl" />
-                    Alto&nbsp;
+                    Alta&nbsp;
                 </span>
             </div>
         </div>

@@ -49,7 +49,7 @@ const UpdateTaskName = ({ taskName, taskId }) => {
                 onClick={() => {
                     setIsEditable(!isEditable);
                 }}
-                className={`${isEditable ? 'hidden' : ''} border-b-1 w-150 p-1 hover:text-white cursor-pointer`}>{updatedTaskName}</p>
+                className={`${isEditable ? 'hidden' : ''} border-b-1 w-150 p-1 text-gray-400 hover:text-white cursor-pointer`}>{updatedTaskName}</p>
             <input ref={inputRef} onChange={(e) => setUpdatedTaskName(e.target.value)} className={`${!isEditable ? 'hidden' : 'bg-gray-900'} rounded-md p-1 border-1 border-gray-400 w-150`} type="text" value={updatedTaskName} />
             <button onClick={() => setIsEditable(!isEditable)} type='button'>
                 <AnimatePresence mode="wait">

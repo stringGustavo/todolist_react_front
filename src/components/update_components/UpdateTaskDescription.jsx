@@ -46,7 +46,7 @@ const UpdateTaskDescription = ({ taskDescription, taskId }) => {
     return (
         <div ref={containerRef} className='flex items-center gap-2'>
             <p onClick={() => setIsEditable(!isEditable)}
-                className={`${isEditable ? 'hidden' : ''} border-b-1 w-150 p-1 text-white cursor-pointer whitespace-pre-line`}>{updatedTaskDescription}</p>
+                className={`${isEditable ? 'hidden' : ''} border-b-1 w-150 p-1 text-gray-400 hover:text-white cursor-pointer whitespace-pre-line`}>{updatedTaskDescription}</p>
             <textarea ref={inputRef} onChange={(e) => setUpdatedTaskDescription(e.target.value)}
                 className={`${!isEditable ? 'hidden' : 'bg-gray-900'} h-20 min-h-20 max-h-40 text-white rounded-md p-1 border-1 border-gray-400 w-150`} type="text" value={updatedTaskDescription} />
             <button onClick={() => setIsEditable(!isEditable)} type='button'>

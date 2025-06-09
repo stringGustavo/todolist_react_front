@@ -20,7 +20,7 @@ const Task = ({ payload }) => {
                     <UpdateTaskPriority taskPriority={task.priority} taskId={task.id} />
                     <div className='text-xl ml-2 text-gray-400'>
                       <UpdateTaskName taskName={task.name} taskId={task.id} />
-                      <UpdateTaskDue taskDue={task.due} />
+                      <UpdateTaskDue taskDue={task.due} taskId={task.id}/>
                     </div>
                   </div>
                   <UpdateTaskDescription taskDescription={task.description} taskId={task.id} />
