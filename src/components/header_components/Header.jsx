@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaSearch } from 'react-icons/fa'
-import SearchInput from '../components/header_components/SearchInput'
-import ViewChanger from '../components/header_components/ViewChanger'
+import SearchInput from './SearchInput'
+import ViewChanger from './ViewChanger'
 
 const Header = () => {
     return (
