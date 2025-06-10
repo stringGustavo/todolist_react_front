@@ -1,47 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaPen, FaTimes } from 'react-icons/fa'
 
-const UpdateTaskName = ({ taskName, taskId }) => {
-    const [isEditable, setIsEditable] = useState(false);
-    const [actualTaskName, setActualTaskName] = useState(taskName);
-    const [updatedTaskName, setUpdatedTaskName] = useState(taskName);
-
-    const inputRef = useRef(null);
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!updatedTaskName.trim()) return;
-
-            if (containerRef.current && containerRef.current.contains(event.target)) return;
-
-            setIsEditable(false);
-
-            if (actualTaskName !== updatedTaskName) {
-
-                axios.put(`http://localhost:3000/task/update/${taskId}`, {
-                    name: updatedTaskName,
-                })
-                    .then(res => console.log('Nome atualizado com sucesso:', res.data.name))
-                    .then(setActualTaskName(updatedTaskName))
-                    .catch(err => console.error('Erro ao atualizar nome:', err));
-            }
-
-        };
-
-        document.addEventListener('click', handleClickOutside);
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [isEditable, updatedTaskName]);
-
-    useEffect(() => {
-        if (isEditable) {
-            inputRef.current?.focus();
-        }
-    }, [isEditable]);
+const TaskName = ({ setIsEditable, isEditable, setUpdatedTaskName, updatedTaskName, actualTaskName, inputRef, containerRef }) => {
 
     return (
         <div ref={containerRef} className='flex items-center gap-2'>
@@ -80,4 +40,4 @@ const UpdateTaskName = ({ taskName, taskId }) => {
     )
 }
 
-export default UpdateTaskName
+export default TaskName

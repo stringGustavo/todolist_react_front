@@ -1,47 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaPen, FaTimes } from 'react-icons/fa'
 
-const UpdateTaskDescription = ({ taskDescription, taskId }) => {
-    const [isEditable, setIsEditable] = useState(false);
-    const [actualTaskDescription, setActualTaskDescription] = useState(taskDescription);
-    const [updatedTaskDescription, setUpdatedTaskDescription] = useState(taskDescription);
-
-    const inputRef = useRef(null);
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!updatedTaskDescription.trim()) return;
-
-            if (containerRef.current && containerRef.current.contains(event.target)) return;
-
-            setIsEditable(false);
-
-            if (actualTaskDescription !== updatedTaskDescription) {
-
-                axios.put(`http://localhost:3000/task/update/${taskId}`, {
-                    description: updatedTaskDescription,
-                })
-                    .then(res => console.log('Nome atualizado com sucesso:', res.data.description))
-                    .then(setActualTaskDescription(updatedTaskDescription))
-                    .catch(err => console.error('Erro ao atualizar nome:', err));
-            }
-
-        };
-
-        document.addEventListener('click', handleClickOutside);
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [isEditable, updatedTaskDescription]);
-
-    useEffect(() => {
-        if (isEditable) {
-            inputRef.current?.focus();
-        }
-    }, [isEditable]);
+const TaskDescription = ({ setIsEditable, isEditable, setUpdatedTaskDescription, updatedTaskDescription, actualTaskDescription, inputRef, containerRef }) => {
 
     return (
         <div ref={containerRef} className='flex items-center gap-2'>
@@ -78,4 +38,4 @@ const UpdateTaskDescription = ({ taskDescription, taskId }) => {
     )
 }
 
-export default UpdateTaskDescription
+export default TaskDescription

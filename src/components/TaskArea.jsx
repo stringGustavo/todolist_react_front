@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Task from './Task';
 import TaskState from './TaskState';
 import axios from 'axios';

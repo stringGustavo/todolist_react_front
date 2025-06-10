@@ -1,7 +1,8 @@
-import React from 'react'
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCheck } from 'react-icons/fa'
 
-const UpdateTaskDue = ({ taskDue }) => {
-    
+const TaskDue = ({ taskDue, isFinished }) => {
+
     const handleDifferenceInDays = (taskDueDate) => {
         const todayDate = new Date();
         const dueDate = new Date(taskDueDate);
@@ -21,11 +22,19 @@ const UpdateTaskDue = ({ taskDue }) => {
         return differenceInDays + ((differenceInDays == 1) ? ` Dia Restante` : ` Dias Restantes`);
     }
 
+    if (isFinished)
+        return (
+            <small className='flex items-center mt-1 bg-green-600 text-gray-900 rounded-md outline-1 outline-gray-900 text-sm px-2 cursor-default w-fit'>
+                <span className='italic mr-2'>Tarefa Finalizada</span>
+                <FaCheck />
+            </small>
+        )
+
     return (
-        <small className='hover:text-white cursor-default'>
+        <small className='cursor-default'>
             <span className={`${handleDifferenceInDays(taskDue) < 0 ? "text-red-500" : "text-green-500"}`}>{handleDifferenceInDaysMessage(taskDue)}</span>
         </small>
     )
 }
 
-export default UpdateTaskDue
+export default TaskDue
