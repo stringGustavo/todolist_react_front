@@ -1,10 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import UpdatePartial from '../update_components/UpdatePartial';
-import UpdateTaskPriority from '../update_components/UpdateTaskPriority';
+import ArchivedTaskPriority from './ArchivedTaskPriority';
 import TaskDue from '../update_components/TaskDue';
-import DeleteButton from '../button_components/DeleteButton';
 import ArchiveButton from '../button_components/ArchiveButton';
-import CompletedButton from '../button_components/CompletedButton';
+import ArchivedTaskName from './ArchivedTaskName';
+import ArchivedTaskDescription from './ArchivedTaskDescription';
 
 const Task = ({ payload }) => {
 
@@ -18,18 +17,16 @@ const Task = ({ payload }) => {
               <div className='flex'>
                 <div className='outline-1 outline-gray-400 bg-gray-800 hover:bg-gray-950 shadow-2xl transition-all ease-in w-175 ml-5 mr-3 rounded-md rounded-tl-none p-2'>
                   <div className='flex items-center'>
-                    <UpdateTaskPriority taskPriority={task.priority} taskId={task.id} />
+                    <ArchivedTaskPriority taskPriority={task.priority} />
                     <div className='text-xl ml-2 text-gray-400'>
-                      <UpdatePartial taskType="name" taskInfo={task.name} taskId={task.id} />
-                      <TaskDue taskDue={task.due} isFinished={task.isFinished}/>
+                      <ArchivedTaskName taskName={task.name} />
+                      <TaskDue taskDue={task.due} isFinished={task.isFinished} />
                     </div>
                   </div>
-                  <UpdatePartial taskType="description" taskInfo={task.description} taskId={task.id} />
+                  <ArchivedTaskDescription taskDescription={task.description} />
                 </div>
                 <div className='flex flex-col'>
-                  <DeleteButton taskId={task.id} />
-                  <ArchiveButton mode={true} taskId={task.id} />
-                  <CompletedButton taskId={task.id} isFinished={task.isFinished}/>
+                  <ArchiveButton mode={false} taskId={task.id}/>
                 </div>
               </div>
             </motion.div>

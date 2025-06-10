@@ -2,14 +2,10 @@ import { useState } from "react"
 import { ViewChangerContext } from "./ViewChangerContext"
 
 const ViewChangerProvider = ({ children }) => {
-    const [viewTrigger, setViewTrigger] = useState(true);
-
-    const triggerViewChange = () => {
-        setViewTrigger(prev => !prev);
-    };
+    const [viewTrigger, setViewTrigger] = useState(false);
 
     return (
-        <ViewChangerContext.Provider value={{ viewTrigger, triggerViewChange }}>
+        <ViewChangerContext.Provider value={{ viewTrigger, setViewTrigger }}>
             {children}
         </ViewChangerContext.Provider>
     )
