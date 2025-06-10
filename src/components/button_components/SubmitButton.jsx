@@ -1,6 +1,6 @@
-import useButtonContext from "../hook/useButtonContext"
+import useButtonContext from "../../hook/useButtonContext"
 
-const Button = ({ onClick, disabled }) => {
+const SubmitButton = ({ onClick, disabled }) => {
     const { triggerClick } = useButtonContext();
 
     return (
@@ -16,4 +16,4 @@ const Button = ({ onClick, disabled }) => {
     )
 }
 
-export default Button
+export default SubmitButton

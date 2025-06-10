@@ -3,7 +3,7 @@ import axios from 'axios'
 import Input from './Input'
 import TextArea from './TextArea'
 import RangeSlider from './RangeSlider'
-import Button from './Button'
+import SubmitButton from './button_components/SubmitButton'
 
 const AddTask = () => {
     const [task, setTask] = useState({
@@ -55,7 +55,7 @@ const AddTask = () => {
 
             <RangeSlider rangePriority={handleChange} value={task.priority} name="priority" />
 
-            <Button onClick={handleSubmit} disabled={!isFormValid}/>
+            <SubmitButton onClick={handleSubmit} disabled={!isFormValid}/>
         </div>
     )
 }
