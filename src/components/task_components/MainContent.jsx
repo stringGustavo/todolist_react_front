@@ -1,6 +1,6 @@
 import TaskArea from './TaskArea'
 import AddTask from './AddTask'
-import Archive from './Archive'
+import Archive from '../archive_components/Archive'
 import ButtonProvider from '../../context/ButtonProvider'
 import useViewChangerContext from '../../hook/useViewChangerContext'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,19 +13,20 @@ const MainContent = () => {
             <AnimatePresence mode="wait">
                 {!viewTrigger ? (
                     <motion.div
+                        key="tasks"
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1}}
+                        animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4 }}
                         className='flex'
                     >
                         <ButtonProvider>
                             <TaskArea />
-                            <AddTask />
                         </ButtonProvider>
                     </motion.div>
                 ) : (
                     <motion.div
+                        tasks="archive"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -37,6 +38,9 @@ const MainContent = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <ButtonProvider>
+                <AddTask />
+            </ButtonProvider>
         </div>
     );
 }
