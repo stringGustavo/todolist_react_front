@@ -36,9 +36,9 @@ const TaskArea = () => {
 
     }, [buttonTrigger])
 
-    if (isEmpty) return <TaskState message={"Nenhuma Tarefa Encontrada."} />
+    if (isEmpty) return <TaskState message={"Nenhuma Tarefa Arquivada."} />
 
-    if (isLoading) return <TaskState message={"Carregando Tarefas..."} />
+    if (isLoading) return <TaskState message={"Carregando Tarefas Arquivadas..."} />
 
     return (
         <ArchivedTask payload={tasks} />

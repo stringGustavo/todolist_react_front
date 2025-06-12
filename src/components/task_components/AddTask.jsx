@@ -18,8 +18,8 @@ const AddTask = () => {
 
     const handleChange = e => setTask({ ...task, [e.target.name]: e.target.value, });
 
-    const handleSubmit = () => {
-        axios.post('http://localhost:3000/task/createTask',
+    const handleSubmit = async () => {
+        await axios.post('http://localhost:3000/task/createTask',
             {
                 name: task.name,
                 description: task.description,
