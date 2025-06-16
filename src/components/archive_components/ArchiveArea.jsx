@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import ArchivedTask from './ArchivedTask';
+import Task from '../task_components/Task';
 import TaskState from '../task_components/TaskState';
 import axios from 'axios';
 import useButtonContext from '../../hook/useButtonContext';
@@ -41,7 +41,7 @@ const TaskArea = () => {
     if (isLoading) return <TaskState message={"Carregando Tarefas Arquivadas..."} />
 
     return (
-        <ArchivedTask payload={tasks} />
+        <Task payload={tasks} isArchived={true} />
     )
 }
 

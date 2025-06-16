@@ -1,12 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import UpdatePartial from '../update_components/UpdatePartial';
 import UpdateTaskPriority from '../update_components/UpdateTaskPriority';
+import ArchivedTaskPriority from '../archive_components/ArchivedTaskPriority'
 import TaskDue from '../update_components/TaskDue';
 import DeleteButton from '../button_components/DeleteButton';
 import ArchiveButton from '../button_components/ArchiveButton';
 import CompletedButton from '../button_components/CompletedButton';
+import TaskName from '../update_components/TaskName';
+import TaskDescription from '../update_components/TaskDescription';
 
-const Task = ({ payload }) => {
+const Task = ({ payload, isArchived }) => {
 
   return (
     <>
@@ -18,18 +21,28 @@ const Task = ({ payload }) => {
               <div className='flex'>
                 <div className='outline-1 outline-gray-400 bg-gray-800 hover:bg-gray-950 shadow-2xl transition-all ease-in w-175 ml-5 mr-3 rounded-md rounded-tl-none p-2'>
                   <div className='flex items-center'>
-                    <UpdateTaskPriority taskPriority={task.priority} taskId={task.id} />
+
+                    {
+                      !isArchived ?
+                        <UpdateTaskPriority taskPriority={task.priority} taskId={task.id} /> : <ArchivedTaskPriority taskPriority={task.priority} />
+                    }
                     <div className='text-xl ml-2 text-gray-400'>
-                      <UpdatePartial taskType="name" taskInfo={task.name} taskId={task.id} />
-                      <TaskDue taskDue={task.due} isFinished={task.isFinished}/>
+                      {
+                        !isArchived ?
+                          <UpdatePartial taskType="name" taskInfo={task.name} taskId={task.id} /> : <TaskName isArchived={true} updatedTaskName={task.name}/>
+                      }
+                      <TaskDue taskDue={task.due} isFinished={task.isFinished} />
                     </div>
                   </div>
-                  <UpdatePartial taskType="description" taskInfo={task.description} taskId={task.id} />
+                  {
+                    !isArchived ?
+                    <UpdatePartial taskType="description" taskInfo={task.description} taskId={task.id} /> : <TaskDescription isArchived={true} updatedTaskDescription={task.description}/>
+                  }
                 </div>
                 <div className='flex flex-col'>
                   <DeleteButton taskId={task.id} />
-                  <ArchiveButton mode={true} taskId={task.id} />
-                  <CompletedButton taskId={task.id} isFinished={task.isFinished}/>
+                  <ArchiveButton mode={!isArchived} taskId={task.id} />
+                  <CompletedButton taskId={task.id} isFinished={task.isFinished} isArchived={isArchived} />
                 </div>
               </div>
             </motion.div>

@@ -1,7 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaPen, FaTimes } from 'react-icons/fa'
 
-const TaskDescription = ({ setIsEditable, isEditable, setUpdatedTaskDescription, updatedTaskDescription, actualTaskDescription, inputRef, containerRef }) => {
+const TaskDescription = ({ isArchived = false, setIsEditable, isEditable, setUpdatedTaskDescription, updatedTaskDescription, actualTaskDescription, inputRef, containerRef }) => {
+
+    if (isArchived)
+        return (
+            <div className='flex items-center gap-2'>
+                <p className='border-b-1 w-150 p-1 text-gray-400 hover:text-white whitespace-pre-line'>{updatedTaskDescription}</p>
+            </div>
+        )
 
     return (
         <div ref={containerRef} className='flex items-center gap-2'>

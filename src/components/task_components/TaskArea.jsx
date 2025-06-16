@@ -24,8 +24,6 @@ const TaskArea = () => {
 
             const apiUrl = isSearchEmpty() ? API_URLS.LOAD_TASKS : API_URLS.SEARCH_TASKS(searchValue);
 
-            console.log(apiUrl)
-
             axios.get(apiUrl)
                 .then((response) => {
                     setIsEmpty(response.data && Object.keys(response.data).length === 0)
