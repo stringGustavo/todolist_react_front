@@ -21,7 +21,6 @@ const Task = ({ payload, isArchived }) => {
               <div className='flex'>
                 <div className='outline-1 outline-gray-400 bg-gray-800 hover:bg-gray-950 shadow-2xl transition-all ease-in w-175 ml-5 mr-3 rounded-md rounded-tl-none p-2'>
                   <div className='flex items-center'>
-
                     {
                       !isArchived ?
                         <UpdateTaskPriority taskPriority={task.priority} taskId={task.id} /> : <ArchivedTaskPriority taskPriority={task.priority} />

@@ -32,7 +32,12 @@ const TaskDue = ({ taskDue, isFinished }) => {
 
     return (
         <small className='cursor-default'>
-            <span className={`${handleDifferenceInDays(taskDue) < 0 ? "text-red-500" : "text-green-500"}`}>{handleDifferenceInDaysMessage(taskDue)}</span>
+            <p className={`${handleDifferenceInDays(taskDue) < 0 ? "text-red-500" : "text-green-500"} flex items-center`}>
+                {handleDifferenceInDaysMessage(taskDue)} 
+                <span className='text-xs text-gray-500 ml-3 opacity-0 hover:opacity-100 transition-all'>
+                     {new Date(taskDue).toLocaleDateString()}
+                </span>
+            </p>
         </small>
     )
 }
